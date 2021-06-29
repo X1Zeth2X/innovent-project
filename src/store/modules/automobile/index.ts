@@ -16,7 +16,7 @@ const state: ListState = {
 
 const namespaced = true;
 
-export const list: Module<ListState, RootState> = {
+export const automobile: Module<ListState, RootState> = {
   namespaced,
   state,
   getters,

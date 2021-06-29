@@ -12,10 +12,11 @@ export const actions: ActionTree<ListState, RootState> = {
       const vehiclesApi = new VehiclesAPI();
       const vehicles = await vehiclesApi.getVehicles();
 
-      console.log(vehicles);
-
-      return null;
+      // Set the vehicles into the
+      commit("setListItems", vehicles);
+      return true;
     } catch (error) {
+      console.log(error);
       return false;
     }
   },

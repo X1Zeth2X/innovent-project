@@ -10,6 +10,7 @@ export const mutations: MutationTree<ListState> = {
   },
 
   setListItems(state, items: Array<Car>) {
+    state.requesting = false;
     state.listItems = items;
   },
 };
