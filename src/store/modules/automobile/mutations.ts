@@ -13,7 +13,9 @@ export const mutations: MutationTree<ListState> = {
   },
 
   applyFilter(state) {
+    // eslint-disable-next-line
     const filter: any = state.filterValues;
+    // eslint-disable-next-line
     const filteredItems = state.listItems.filter((car: any) => {
       for (const key in filter) {
         if (car[key] === undefined || car[key] !== filter[key]) return false;

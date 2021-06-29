@@ -1,4 +1,3 @@
-import VehiclesAPI from "@/mock-api/vehicles-api";
 import { Car, RootState } from "@/store/types";
 import { ActionTree } from "vuex";
 import { FilterValues, ListState } from "./types";
