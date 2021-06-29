@@ -1,4 +1,4 @@
-# automobiles
+# Automobiles
 
 ## Project setup
 ```
