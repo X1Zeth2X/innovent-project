@@ -3,22 +3,30 @@ import { MutationTree } from "vuex";
 import { FilterValues, ListState } from "./types";
 
 export const mutations: MutationTree<ListState> = {
-  listRequest(state) {
-    state.requesting = true;
-    state.error = false;
-    state.listErrorMsg = "";
-  },
-
   setListItems(state, items: Array<Car>) {
-    state.requesting = false;
     state.listItems = items;
   },
 
   setFilter(state, filterValues: FilterValues) {
     state.filterValues = filterValues;
+    console.log(state);
+  },
+
+  applyFilter(state) {
+    const filter: any = state.filterValues;
+    const filteredItems = state.listItems.filter((car: any) => {
+      for (const key in filter) {
+        if (car[key] === undefined || car[key] !== filter[key]) return false;
+      }
+
+      return true;
+    });
+
+    state.filteredList = filteredItems;
   },
 
   clearFilter(state) {
     state.filterValues = {};
+    state.filteredList = [];
   },
 };

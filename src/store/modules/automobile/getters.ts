@@ -3,15 +3,15 @@ import { GetterTree } from "vuex";
 import { FilterValues, ListState } from "./types";
 
 export const getters: GetterTree<ListState, RootState> = {
-  listItems(state): Array<Car> | null {
+  listItems(state): Array<Car> | undefined {
     return state.listItems;
   },
 
-  requesting(state): boolean {
-    return state.requesting;
+  filteredList(state): Array<Car> | undefined {
+    return state.filteredList;
   },
 
-  filter(state): FilterValues {
+  filter(state): FilterValues | undefined {
     return state.filterValues;
   },
 };

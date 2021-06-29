@@ -8,11 +8,8 @@ import { actions } from "./actions";
 
 const state: ListState = {
   listItems: [],
+  filteredList: [],
   filterValues: {},
-
-  requesting: false,
-  error: false,
-  listErrorMsg: "",
 };
 
 const namespaced = true;

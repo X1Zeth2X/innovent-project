@@ -2,16 +2,12 @@ import { Car } from "@/store/types";
 
 export interface FilterValues {
   model?: string;
-  year?: number;
   name?: string;
+  year?: number;
 }
 
 export interface ListState {
   listItems: Array<Car>;
-
-  filterValues: FilterValues;
-
-  requesting: boolean;
-  error: boolean;
-  listErrorMsg: string;
+  filteredList?: Array<Car>;
+  filterValues?: FilterValues;
 }
