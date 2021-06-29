@@ -27,14 +27,18 @@
             large
             v-bind="attrs"
             v-on="on"
-            >Year</v-btn
           >
+            {{ carYear === 0 ? "Pick a Year" : carYear }}
+          </v-btn>
         </template>
 
         <v-list>
-          <v-subheader>Car Year</v-subheader>
-          <v-list-item>
-            <v-list-item-title> Year </v-list-item-title>
+          <v-list-item
+            v-for="(year, index) in years"
+            :key="index"
+            @click="carYear = year"
+          >
+            <v-list-item-title> {{ year }} </v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -48,8 +52,6 @@
       <v-btn @click="removeFilters()" color="error" class="my-2" outlined block
         >Clear Filter</v-btn
       >
-
-      {{ filter }}
     </v-container>
   </v-navigation-drawer>
 </template>
@@ -58,6 +60,7 @@
 import { FilterValues } from "@/store/modules/automobile/types";
 import Vue from "vue";
 import Component from "vue-class-component";
+import { Emit } from "vue-property-decorator";
 import { Action, Getter } from "vuex-class";
 
 @Component
@@ -65,11 +68,18 @@ export default class Drawer extends Vue {
   @Getter("filter", { namespace: "automobile" })
   private filter!: FilterValues;
 
-  @Action("setFilter", { namespace: "automobile" })
-  private setFilter!: CallableFunction;
+  @Action("applyFilter", { namespace: "automobile" })
+  private applyFilter!: CallableFunction;
 
   @Action("clearFilter", { namespace: "automobile" })
   private clearFilter!: CallableFunction;
+
+  @Emit("useFilter")
+  private useFilter(value: boolean) {
+    return value;
+  }
+
+  private years: Array<number> = [1982, 1990, 1995, 2000];
 
   // Instantiate filter values.
   private carModel = "";
@@ -81,15 +91,14 @@ export default class Drawer extends Vue {
     // New filter values
     let filterValues: FilterValues = {};
 
-    console.log(this.carModel);
-
     // Basic validation
     if (this.carModel !== "") filterValues.model = this.carModel;
     if (this.carName !== "") filterValues.name = this.carName;
-    if (this.carYear !== 0 && typeof this.carYear !== "string")
+    if (this.carYear !== 0 && typeof this.carYear === "number")
       filterValues.year = this.carYear;
 
-    this.setFilter(filterValues);
+    this.applyFilter(filterValues);
+    this.useFilter(true);
   }
 
   // Remove any filters applied
@@ -101,6 +110,7 @@ export default class Drawer extends Vue {
 
     // Clear filters in Vuex.
     this.clearFilter();
+    this.useFilter(false);
   }
 }
 </script>
