@@ -1,0 +1,12 @@
+{
+  "vehicles": [
+    {
+      "model": "DeLorean",
+      "name": "DMC",
+      "price": 100000,
+      "year": 1982,
+      "rating": 5,
+      "thumbnail": ""
+    }
+  ]
+}
