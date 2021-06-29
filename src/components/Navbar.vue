@@ -6,7 +6,7 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <v-btn text>Landing</v-btn>
+        <v-btn text @click="$router.push('/')">Landing</v-btn>
 
         <v-btn text disabled>About Us</v-btn>
       </v-toolbar-items>
