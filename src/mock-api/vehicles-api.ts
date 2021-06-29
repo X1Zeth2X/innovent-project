@@ -4,25 +4,25 @@ import data from "./vehicles.json";
 
 // Create a new Vehicles Mock API
 class VehiclesAPI {
-  getVehicles = (): Promise<Car[]> => {
-    // @TODO: Fake Pagination
-
+  getVehicles = (start: number, end: number): Promise<Car[]> => {
     return new Promise((resolve) => {
       // Simulate network (250ms) delay
-      setTimeout(() => resolve(data.vehicles), 250);
+      const requestedVehicles = data.vehicles.slice(start, end);
+      setTimeout(() => resolve(requestedVehicles), 250);
     });
   };
 
   // Get a specific vehicle by its ID
   getVehicle = (id: number): Promise<Car> => {
+    // Return a new promise with setTimeout to simulate network delay.
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         try {
-          // Filter vehicles and return with matching id.
+          // Filter vehicles and return the specific vehicle's data.
           const vehicle = data.vehicles.filter(
             (vehicle) => vehicle.id == id
-          )[0];
-          resolve(vehicle);
+          )[0]; // Get the `0` index since IDs are unique anyways.
+          resolve(vehicle); // Resolve the promise with the Vehicle's data.
         } catch (error) {
           reject(error);
         }
