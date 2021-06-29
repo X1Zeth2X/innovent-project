@@ -1,6 +1,6 @@
 import { Car } from "@/store/types";
 import { MutationTree } from "vuex";
-import { ListState } from "./types";
+import { FilterValues, ListState } from "./types";
 
 export const mutations: MutationTree<ListState> = {
   listRequest(state) {
@@ -12,5 +12,13 @@ export const mutations: MutationTree<ListState> = {
   setListItems(state, items: Array<Car>) {
     state.requesting = false;
     state.listItems = items;
+  },
+
+  setFilter(state, filterValues: FilterValues) {
+    state.filterValues = filterValues;
+  },
+
+  clearFilter(state) {
+    state.filterValues = {};
   },
 };

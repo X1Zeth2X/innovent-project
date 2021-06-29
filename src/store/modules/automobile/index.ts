@@ -8,6 +8,7 @@ import { actions } from "./actions";
 
 const state: ListState = {
   listItems: [],
+  filterValues: {},
 
   requesting: false,
   error: false,

@@ -1,6 +1,6 @@
 import { RootState, Car } from "@/store/types";
 import { GetterTree } from "vuex";
-import { ListState } from "./types";
+import { FilterValues, ListState } from "./types";
 
 export const getters: GetterTree<ListState, RootState> = {
   listItems(state): Array<Car> | null {
@@ -9,5 +9,9 @@ export const getters: GetterTree<ListState, RootState> = {
 
   requesting(state): boolean {
     return state.requesting;
+  },
+
+  filter(state): FilterValues {
+    return state.filterValues;
   },
 };
