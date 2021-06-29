@@ -3,7 +3,7 @@
     <Navbar />
 
     <v-main>
-      <keep-alive>
+      <keep-alive include="Landing">
         <router-view />
       </keep-alive>
     </v-main>

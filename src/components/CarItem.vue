@@ -40,8 +40,8 @@ import { Prop } from "vue-property-decorator";
 export default class CarItem extends Vue {
   @Prop() car!: Car;
 
-  private showCarDetails() {
-    this.$router.push(`/details/${this.car.id}`);
+  private async showCarDetails() {
+    await this.$router.push(`/details/${this.car.id}`);
   }
 }
 </script>

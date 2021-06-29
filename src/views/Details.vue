@@ -47,28 +47,27 @@
 
 <script lang="ts">
 import VehiclesAPI from "@/mock-api/vehicles-api";
-import { Car } from "@/store/types";
 import Vue from "vue";
 import Component from "vue-class-component";
+import { Car } from "@/store/types";
+
+const vehicleAPI = new VehiclesAPI();
 
 @Component
 export default class Detail extends Vue {
-  private vehicleID: number | null = null;
-
   private vehicleData = {};
   private liked = false;
 
   // Vue `created` lifecycle
   private async created() {
     // Get route params
-    this.vehicleID = parseInt(this.$route.params.id);
+    const vehicleID = parseInt(this.$route.params.id);
 
     // Hackish method, in a real product this should be talking with a service / more vuex actions.
-    const vehicleAPI = new VehiclesAPI();
-    const vehicle: Car = await vehicleAPI.getVehicle(this.vehicleID);
+    const vehicle: Car = await vehicleAPI.getVehicle(vehicleID);
 
     if (vehicle === undefined) {
-      this.$router.push("/404");
+      await this.$router.push("/404");
     }
 
     this.vehicleData = vehicle;
