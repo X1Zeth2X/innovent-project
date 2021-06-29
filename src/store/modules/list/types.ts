@@ -1,11 +1,4 @@
-export interface Car {
-  model: string;
-  name: string;
-  price: number;
-  year: number;
-  rating: number; // Stars (out of 5).
-  thumbnail: string; // Car picture.
-}
+import { Car } from "@/store/types";
 
 export interface ListState {
   listItems: Array<Car>;

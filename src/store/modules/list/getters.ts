@@ -1,6 +1,6 @@
-import { RootState } from "@/store/types";
+import { RootState, Car } from "@/store/types";
 import { GetterTree } from "vuex";
-import { Car, ListState } from "./types";
+import { ListState } from "./types";
 
 export const getters: GetterTree<ListState, RootState> = {
   listItems(state): Array<Car> | null {

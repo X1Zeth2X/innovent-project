@@ -1,5 +1,6 @@
+import { Car } from "@/store/types";
 import { MutationTree } from "vuex";
-import { Car, ListState } from "./types";
+import { ListState } from "./types";
 
 export const mutations: MutationTree<ListState> = {
   listRequest(state) {
