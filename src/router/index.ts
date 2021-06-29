@@ -11,9 +11,14 @@ const routes: Array<RouteConfig> = [
     component: Landing,
   },
   {
-    path: "/detail/:id",
-    name: "Detail",
-    component: () => import("../views/Detail.vue"),
+    path: "/details/:id",
+    name: "Details",
+    component: () => import("../views/Details.vue"),
+  },
+  {
+    path: "*",
+    name: "NotFound",
+    component: () => import("../views/NotFound.vue"),
   },
 ];
 
@@ -21,6 +26,9 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    // @TODO: Implement scroll positioning
+  },
 });
 
 export default router;

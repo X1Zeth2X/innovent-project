@@ -1,10 +1,12 @@
 <template>
   <div id="landing">
     <Drawer />
-    {{ filterValues }}
-
-    <v-container>
-      <CarItem v-for="data in listItems" :car="data" :key="data.id" />
+    <v-container class="px-10">
+      <v-row>
+        <v-col sm="12" md="6">
+          <CarItem v-for="data in listItems" :car="data" :key="data.id" />
+        </v-col>
+      </v-row>
 
       @TODO: Add Infinite Scrolling
     </v-container>
@@ -41,11 +43,5 @@ export default class Landing extends Vue {
     // Once the landing page has been created, get vehicles from mock API.
     this.getVehicles();
   }
-
-  private filterValues = {
-    model: "",
-    year: null,
-    name: "",
-  };
 }
 </script>
