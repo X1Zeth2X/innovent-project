@@ -4,7 +4,7 @@ import Vuex, { StoreOptions } from "vuex";
 import { RootState } from "./types";
 
 // Import vuex-class modules
-import { list } from "./modules/list/index";
+import { automobile } from "./modules/automobile/index";
 
 // Register Vuex module in Vue app.
 Vue.use(Vuex);
@@ -17,7 +17,7 @@ const store: StoreOptions<RootState> = {
 
   modules: {
     // Register vuex modules
-    list,
+    automobile,
   },
 };
 

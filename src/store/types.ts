@@ -1,5 +1,6 @@
 // Car Interface - will be used by multiple vuex modules.
 export interface Car {
+  id: number;
   model: string;
   name: string;
   price: number;
